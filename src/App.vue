@@ -1,11 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <!-- <TopNav v-if="!hide" /> -->
   <router-view />
 </template>
+<script>
+// import TopNav from '@/components/TopNav.vue';
+export default {
+  name: 'App',
+  components: {
+    // TopNav,
+  },
+  computed: {
+    hide() {
+      const hiddenPages = ['DemoPage1', 'ThankYou', 'LoginPage', 'RegistrationPage', 'TemplateOne', 'TemplateTwo', 'TemplateThree']
+      return hiddenPages.includes(this.$route.name)
+    },
+  }
 
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -15,16 +27,14 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+:root {
+  --bg-primary: #02539E;
+  --bg-secondary: #02539E;
+  --bg-tertiary: #894718;
+  --bg-forth: #FBF4F4;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.smaller {  
+  font-size: 12px;
 }
 </style>
