@@ -14,14 +14,14 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 my-5">
         <div class="col" v-for="(sentence, index) in filteredSentences" :key="index">
-          <div class="card text-decoration-none">
-            <div class="card-body p-0">
-              <h6 class="card-title text-capitalize border-bottom p-2" style="min-height: 6rem;"
-                :style="{ backgroundColor: randomColors[index] }">{{ sentence }}</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, repellat!
-              </p>
+          <router-link :to="'/services/' + generateSlug(sentence)" class="card text-decoration-none">
+            <div class="card-body py-0" :style="{ backgroundColor: randomColors[index] }">
+              <div class="border-bottom border-dark py-1">
+                <i :class="randomArrowIcons[index]" class="fs-4"></i>
+              </div>
+              <h6 class="card-title text-capitalize pt-3" style="min-height: 6rem;">{{ sentence }}</h6>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -71,6 +71,7 @@ export default {
   mounted() {
     this.generateSentences();
     this.assignRandomColors();
+    this.assignRandomIcons();
   },
   methods: {
     generateSentences() {
@@ -87,6 +88,9 @@ export default {
     assignRandomColors() {
       this.randomColors = this.sentences.map(() => this.getRandomLightColor());
     },
+    assignRandomIcons() {
+      this.randomArrowIcons = this.sentences.map(() => this.getRandomArrowIcon());
+    },
     getRandomLightColor() {
       const letters = 'BCDEF'; // Letters corresponding to light colors
       let color = '#';
@@ -94,6 +98,16 @@ export default {
         color += letters[Math.floor(Math.random() * letters.length)];
       }
       return color;
+    },
+    getRandomArrowIcon() {
+      const arrowIcons = [
+        'bi-arrow-up', 'bi-arrow-right', 'bi-arrow-down', 'bi-arrow-left',
+        'bi-arrow-up-right', 'bi-arrow-down-right', 'bi-arrow-down-left', 'bi-arrow-up-left'
+      ];
+      return arrowIcons[Math.floor(Math.random() * arrowIcons.length)];
+    },
+    generateSlug(sentence) { 
+      return sentence.toLowerCase().replace(/\s+/g, '-');
     }
   },
   computed: {
@@ -105,8 +119,13 @@ export default {
     }
   },
   watch: {
+    sentences() {
+      this.assignRandomColors();
+      this.assignRandomIcons();
+    },
     selectedCategory() {
       this.assignRandomColors();
+      this.assignRandomIcons();
     }
   }
 };

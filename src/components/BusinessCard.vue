@@ -43,12 +43,12 @@
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2">
             <div class="col" v-for="(place, index) in places" :key="index">
                 <router-link :to="'/place/' + place" class="card text-decoration-none">
-                    <p class="card-header text-capitalize">{{ place }}</p>
-                    <div class="card-body">
+                    <p class="card-header text-capitalize border-0">{{ place }}</p>
+                    <!-- <div class="card-body">
                         <p class="card-text text-capitalize">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                             Alias, cupiditate.</p>
                         <a href="#" class="btn btn-primary">More</a>
-                    </div>
+                    </div> -->
                 </router-link>
             </div>
         </div>

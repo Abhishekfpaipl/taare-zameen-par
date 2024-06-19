@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid text-white py-4" :style="{ backgroundColor: brandColorOne  }">
         <div class="row">
             <div class="d-flex flex-column justify-content-center mb-4">
                 <p class="px-2 py-3 text-center mb-0 bill"><span class="fs-2">~ Our Facts ~</span></p>
@@ -34,10 +34,43 @@
 <script>
 import AutoCounter from '@/components/AutoCounter.vue'
 export default {
-    name: "CustomCounter",
-    props: ['name1', 'name2', 'name3', 'value1', 'value2', 'value3'],
+    name: "CustomCounter", 
     components: {
         AutoCounter
+    },
+    props:{
+        name1: {
+            type: String,
+            required: true
+        },
+        name2: {
+            type: String,
+            required: true
+        },
+        name3: {
+            type: String,
+            required: true
+        },
+        value1: {
+            type: Number,
+            required: true
+        },
+        value2: {
+            type: Number,
+            required: true
+        },
+        value3: {
+            type: Number,
+            required: true
+        },
+        brandColorOne: {
+            type: String,
+            required: true
+        },
+        brandTextColor: {
+            type: String,
+            required: true
+        },
     },
 }
 </script>

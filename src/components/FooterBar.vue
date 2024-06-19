@@ -6,8 +6,8 @@
                 <router-link to="/">
                     <img :src="`${publicPath}${img}`" style="width: 100px;object-fit: contain;">
                 </router-link>
-                <p class="mb-0 fw-bold fs-2 text-uppercase">workwity</p>
-                <p class="mb-2 text-capitalize">your productivity partner</p>
+                <p class="mb-0 fw-bold fs-2 text-uppercase" style="color: #125252;">workwity</p>
+                <p class="mb-2 text-capitalize" style="color: #125252;">your productivity partner</p>
             </div>
             <div class="mb-3 text-start">
                 <p class="mb-2 fw-bold">Contact Us</p>
@@ -34,10 +34,7 @@
                 <p class="mb-2 fw-bold">Resources</p>
                 <router-link to="/legal-warning" class="text-dark" style="text-decoration: none;">
                     <p class="mb-2">Legal Warning</p>
-                </router-link>
-                <!-- <router-link to="/faq" class="text-white" style="text-decoration: none;">
-                    <p class="mb-2">Ask Faqs</p>
-                </router-link> -->
+                </router-link> 
                 <router-link to="/privacy-policy" class="text-dark" style="text-decoration: none;">
                     <p class="mb-2">Privacy Policy</p>
                 </router-link>

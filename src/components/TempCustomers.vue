@@ -1,6 +1,5 @@
-<template>
-    <div>
-      <div class="container my-5">
+<template> 
+      <div class="container">
         <h1 class="text-capitalize text-center">{{title}}</h1>
         <div class="w-100 d-block">
           <div class="w-100 overflow-auto d-flex align-items-center hide-scroll" ref="slider">
@@ -20,8 +19,7 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div> 
   </template>
   
   <script>

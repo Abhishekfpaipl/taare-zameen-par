@@ -1,15 +1,15 @@
 <template>
   <div class="">
-    <TemplateDemo v-observe />
+    <TemplateTwo v-observe />
   </div>
 </template>
 
 <script>
-import TemplateDemo from '@/components/TemplateDemo.vue'
+import TemplateTwo from '@/components/TemplateTwo.vue'
 export default {
   name: "HomePage",
-  components: { 
-        TemplateDemo,
-    },
+  components: {
+    TemplateTwo,
+  },
 };
 </script>

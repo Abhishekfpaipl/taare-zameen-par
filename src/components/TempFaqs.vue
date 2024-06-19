@@ -5,11 +5,11 @@
                 <img :src="imageSrc" class="img-fluid" style="height: 250px;" alt="Image">
             </div>
             <div class="col-md-6 mt-5 mt-md-0">
-                <h3 class="text-start mb-3 text-capitalize">{{ title }}</h3>
+                <h3 class="text-start mb-4 text-capitalize">{{ title }}</h3>
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div v-for="(faq, index) in faqs" :key="index" class="accordion-item my-2 border-0">
                         <h2 class="accordion-header border">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
                                 :data-bs-target="'#flush-collapseOne' + index" aria-expanded="false"
                                 :aria-controls="'flush-collapseOne' + index">
                                 <span class="me-2">Q{{ index + 1 }}.</span> {{ faq.question }}

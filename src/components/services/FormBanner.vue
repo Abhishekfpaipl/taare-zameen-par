@@ -1,14 +1,15 @@
 <template>
     <div class="" :style="{ backgroundColor: brandColorOne }">
         <div class="container">
-            <div class="row d-flex align-items-center justify-content-center p-md-5 p-3">
-                <h3 class="text-white text-uppercase mb-1">Welcome to</h3>
-                <h1 class="text-white text-uppercase mb-1">{{ brandName }}</h1>
-                <h1 class="text-white text-uppercase mb-1"></h1>
-                 <div class="bg-danger rounded py-2">
-                    <h3 v-if="service" class="text-white text-uppercase mb-0">{{ service }} </h3>
-                    <p class="text-white text-capitalize fs-5 fw-bold mb-0">
-                        <span v-if="category" class="text-uppercase">&nbsp;to&nbsp;{{ category }}</span>
+            <div class="row d-flex align-items-center justify-content-center p-md-5 p-3 py-5">  
+                <h3 class="text-white text-uppercase mb-0">{{ text }}</h3>
+                <div class="text-center rounded">
+                    <h1 class="text-white text-uppercase text-wrap mb-0">
+                        <span v-if="service">{{ service }}</span>
+                        <span v-if="customer">&nbsp;to&nbsp;{{ customer }}</span>
+                    </h1> 
+                    <p class="text-white text-capitalize fs-5 mb-0">
+                        <span v-if="category" class="text-uppercase">&nbsp;from&nbsp;{{ category }}</span>
                         <span v-if="place" class="text-uppercase">&nbsp;in&nbsp;{{ place }}</span>
                     </p>
                 </div>
@@ -43,8 +44,37 @@
 </template>
 <script>
 export default {
-    name: 'SalesFunnelPage',
-    props: ['brandColorOne', 'brandName', 'service', 'category', 'place'],
+    name: 'FormBanner', 
+    props:{
+        brandColorOne:{
+            type: String,
+            required: true 
+        },
+        brandName:{
+            type: String,
+            required: true 
+        },
+        service:{
+            type: String,
+            required: true 
+        },
+        category:{
+            type: String,
+            required: true 
+        },
+        place:{
+            type: String,
+            required: true 
+        },
+        text:{
+            type: String,
+            required: true 
+        },
+        customer:{
+            type: String,
+            required: true 
+        }
+    },
     data() {
         return {
             name: "",

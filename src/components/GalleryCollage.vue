@@ -1,9 +1,13 @@
 <template>
-    <div class=" py-3">
-        <p class="px-2 py-3 text-center mb-0 bill"><span class="fs-2">~ Gallery ~</span></p>
-        <div class="container" id="imageCollage" ref="imageCollage">
-            <div class="collageImage border" v-for="(image, index ) in images" :key="index">
-                <img :src="image.src" :alt="image.alt">
+    <div class="">
+        <div class="text-white py-5" style=" background-color: #125252 ;padding-bottom: 6rem !important;">
+            <h1 class="text-center mb-0 fw-bold">Gallery</h1>
+            <!-- <small class="text-capitalize">The secret of getting ahead, is getting started</small> -->
+        </div>
+        <div class="container bg-white rounded-top-5 p-4" id="imageCollage" ref="imageCollage"
+            style="margin-top: -40px;">
+            <div class="collageImage border rounded-top" v-for="(image, index ) in images" :key="index">
+                <img :src="image.src" :alt="image.alt" class="rounded-top">
             </div>
         </div>
     </div>

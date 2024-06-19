@@ -16,7 +16,7 @@
             </div>
         </div> -->
 
-        <p class="px-2 py-3 text-center mb-0 bill"><span class="fs-2">~ Schedule ~</span></p>
+        <h1 class="px-2 py-3 text-center mb-0"> Schedule </h1>
         <div class="d-flex justify-content-center">
             <div class="container row ">
                 <div class="col-md-3 m-1 col-1 card card-body bg-light text-secondary">

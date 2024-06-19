@@ -7,6 +7,7 @@
         <div class="col-md-8">
           <h3 class="text-capitalize">{{ title }}</h3>
           <p>{{ description }}</p>
+          <button class="btn btn-dark">{{ buttonText }}</button>
           
         </div>
         <div v-if="imagePosition === 'right'" class="col-md-4">
@@ -37,6 +38,10 @@
         validator: function (value) {
           return ['left', 'right'].includes(value.toLowerCase());
         }
+      },
+      buttonText: {
+        type: String,
+        required: true
       }
     }
   };

@@ -1,21 +1,30 @@
 <template>
   <div class="container py-3">
-    <p class="px-2 py-3 text-center mb-3">
-      <span class="fs-2">~ About Us ~</span>
-    </p>
-    <div class="text-end d-flex justify-content-end gap-3">
-      <i class="bi bi-chevron-left fs-1" @click="scrollLeft"></i>
-      <i class="bi bi-chevron-right fs-1" @click="scrollRight"></i>
-    </div>
-    <div class="d-flex gap-3 overflow-x-scroll" id="scroll" ref="scrollContainer">
-      <div class="" v-for="(custom, index) in customFields" :key="index">
-        <div class="card" style="min-width: 18rem; min-height: 12rem">
-          <div class="card-body p-0">
-            <h5 class="card-title border-bottom py-3 bg-light">{{ custom.name }}</h5>
-            <p class="card-text px-2 overflow-scroll" id="scroll">{{ custom.value }}</p>
+    <h1 class="px-2 text-center mb-0">About Us</h1>
+    <router-link to="/about" class="text-decoration-none text-dark d-flex justify-content-end mb-2">
+      <span>Know More </span>
+      <i class="bi bi-arrow-right"></i>
+    </router-link>
+    <div class="position-relative">
+      <div class="d-flex gap-3 overflow-x-scroll" id="scroll" ref="scrollContainer">
+        <div class="" v-for="(custom, index) in customFields" :key="index">
+          <div class="card" style="min-width: 18rem; min-height: 12rem">
+            <div class="card-body p-0">
+              <h5 class="card-title border-bottom py-3 bg-light">{{ custom.name }}</h5>
+              <p class="card-text px-2 overflow-scroll" id="scroll">{{ custom.value }}</p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="rounded-circle border d-flex justify-content-center align-items-center position-absolute bg-light"
+        @click="scrollLeft" style="width: 40px; height:40px ;top: 40%; left: -2%">
+        <i class="bi bi-chevron-left"></i>
+      </div>
+      <div class="rounded-circle border d-flex justify-content-center align-items-center position-absolute bg-light"
+        @click="scrollRight" style="width: 40px; height:40px ;top: 40%; right: -2%">
+        <i class="bi bi-chevron-right"></i>
+      </div>
+
     </div>
   </div>
 </template>
@@ -23,30 +32,36 @@
 <script>
 export default {
   name: 'InfoSection',
-  props: ['customFields'],
-  methods: {
-  scrollLeft() {
-    const container = this.$refs.scrollContainer;
-    const scrollWidth = container.clientWidth;
-    const newScrollLeft = Math.max(container.scrollLeft - scrollWidth);
-
-    container.scrollTo({
-      left: newScrollLeft,
-      behavior: 'smooth'
-    });
+  // props: ['customFields'],
+  props: {
+    customFields: {
+      type: Array,
+      required: true
+    }
   },
-  scrollRight() {
-    const container = this.$refs.scrollContainer;
-    const scrollWidth = container.clientWidth;
-    const maxScrollLeft = container.scrollWidth - scrollWidth;
-    const newScrollLeft = Math.min(container.scrollLeft + scrollWidth, maxScrollLeft);
+  methods: {
+    scrollLeft() {
+      const container = this.$refs.scrollContainer;
+      const scrollWidth = container.clientWidth;
+      const newScrollLeft = Math.max(container.scrollLeft - scrollWidth);
 
-    container.scrollTo({
-      left: newScrollLeft,
-      behavior: 'smooth'
-    });
+      container.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    },
+    scrollRight() {
+      const container = this.$refs.scrollContainer;
+      const scrollWidth = container.clientWidth;
+      const maxScrollLeft = container.scrollWidth - scrollWidth;
+      const newScrollLeft = Math.min(container.scrollLeft + scrollWidth, maxScrollLeft);
+
+      container.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
   }
-}
 }
 </script>
 

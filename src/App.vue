@@ -1,17 +1,20 @@
 <template>
-  <!-- <TopNav v-if="!hide" /> -->
+  <TopNav v-if="!hide" />
   <router-view />
+  <FooterBar v-if="!hide" />
 </template>
 <script>
-// import TopNav from '@/components/TopNav.vue';
+import TopNav from '@/components/TopNav.vue';
+import FooterBar from '@/components/FooterBar.vue';
 export default {
   name: 'App',
   components: {
-    // TopNav,
+    TopNav,
+    FooterBar,
   },
   computed: {
     hide() {
-      const hiddenPages = ['DemoPage1', 'ThankYou', 'LoginPage', 'RegistrationPage', 'TemplateOne', 'TemplateTwo', 'TemplateThree']
+      const hiddenPages = ['DemoPage1', 'ThankYou', 'LoginPage', 'RegistrationPage','ForgotPasswordPage']
       return hiddenPages.includes(this.$route.name)
     },
   }
@@ -34,7 +37,7 @@ export default {
   --bg-forth: #FBF4F4;
 }
 
-.smaller {  
+.smaller {
   font-size: 12px;
 }
 </style>

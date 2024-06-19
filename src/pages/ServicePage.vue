@@ -1,9 +1,7 @@
 <template>
     <div>
-        <NavBar brandColorOne="#125252" brandTextColor="#77E6B5" brandLogo="/img/logo.svg" brandName="workwity"
-            brandTagLine="Your Productivity Partner" :brandLinks="topLinks" />
         <div class="my-5">
-            <FormBanner brandColorOne="#125252" brandName="work wity" :service="services" :category="category"
+            <FormBanner brandColorOne="#125252" brandName="work wity" :text="text" :customer="customer" :service="service" :category="category"
                 :place="place" v-observe />
         </div> 
         <div class="">
@@ -19,8 +17,8 @@
             <Faq :questions="questions" v-observe />
         </div>
         <div class="">
-            <Counter service="Website Development" :serviceCount="2000" category="India" :categoryCount="1500"
-                place="All over the world" :placeCount="5000" v-observe />
+            <Counter :service="service" :serviceCount="2000" :category="category" :categoryCount="1500"
+                :place="place" :placeCount="5000" v-observe />
         </div>
         <div class="">
             <OurService v-observe />
@@ -28,14 +26,10 @@
         <div class="">
             <FameFoot service="Website Development" :category="null" :place="null" v-observe />
         </div>
-    </div>
-    <p></p>
-    <FooterBar />
+    </div> 
 </template>
 <script>
-import NavBar from '@/components/NavBar.vue';
-import LeadManagement from '@/components/services/LeadManagement.vue'
-import FooterBar from '@/components/services/FooterBar.vue'
+import LeadManagement from '@/components/services/LeadManagement.vue' 
 import OurService from '@/components/services/OurService.vue'
 import TempCustomers from '@/components/TempCustomers.vue';
 import Faq from '@/components/services/FaqSection.vue';
@@ -46,9 +40,7 @@ import AutoScrolling from '@/components/services/AutoScrolling.vue';
 export default {
     name: "WebsiteDevelopmentPage",
     components: {
-        NavBar,
-        LeadManagement,
-        FooterBar,
+        LeadManagement, 
         OurService,
         FormBanner,
         TempCustomers,
@@ -59,9 +51,10 @@ export default {
     },
     data() {
         return {
-            services: '',
+            text: '',
+            service: '',
+            customer: '',
             category: '',
-            tagTest: '',
             place: '',
             links: [
                 {
@@ -293,53 +286,6 @@ export default {
                     text: "Saleswik has helped us to decentralize information. Now all the team has access to the documents and sales information. We no longer have the problem that some documents is stored on the PC of a teammate who is not accessible at the time."
                 },
             ],
-            topLinks: [
-                {
-                    id: 1,
-                    name: 'Home',
-                    link: '/'
-                },
-                {
-                    id: 2,
-                    name: 'Services',
-                    link: '/services'
-                },
-                {
-                    id: 3,
-                    name: 'About',
-                    link: '/about'
-                },
-                {
-                    id: 4,
-                    name: 'Contact',
-                    link: '/contact'
-                },
-                {
-                    id: 5,
-                    name: 'Blog',
-                    link: '/blog'
-                },
-                {
-                    id: 6,
-                    name: 'Pricing',
-                    link: '/pricing'
-                },
-                {
-                    id: 7,
-                    name: 'FAQ',
-                    link: '/faq'
-                },
-                {
-                    id: 8,
-                    name: 'Blog',
-                    link: '/blog'
-                },
-                {
-                    id: 9,
-                    name: 'Careers',
-                    link: '/careers'
-                },
-            ]
         }
     },
     // created() {
@@ -354,35 +300,49 @@ export default {
     //         console.error('Route parameter "title" is undefined');
     //     }
     // }, 
-    created() {
-        // Log the route params to debug
-        console.log('Route params:', this.$route.params);
-        
-        // Extract the route parameter by the correct name
-        const routeParam = this.$route.params.title; // Use 'slug' if that is the parameter name
-        if (routeParam) {
-            // Set tagTest based on the route parameter
-            switch (routeParam) {
-                case 'we-are-offering-product-and-services':
-                    this.tagTest = 'We are offering product and services';
-                    this.services = this.$route.params.name
-                    break;
-                case 'we-are-loved-by-peoples':
-                    this.tagTest = 'We are loved by peoples';
-                    break;
-                case 'we-are-working-for-industries':
-                    this.tagTest = 'We are working for industries';
-                    break;
-                case 'we-are-working-in-cities':
-                    this.tagTest = 'We are working in cities';
-                    break;
-                default:
-                    this.tagTest = ''; // Handle default case if needed
-                    break;
-            }
-        } else {
-            console.error('Route parameter "title" is undefined');
-        }
-    }, 
+    // created() {
+    //     // Log the route params to debug
+    //     console.log('Route params:', this.$route.params);
+
+    //     // Extract the route parameter by the correct name
+    //     const routeParam = this.$route.params.title; // Use 'slug' if that is the parameter name
+    //     if (routeParam) {
+    //         // Set tagTest based on the route parameter
+    //         switch (routeParam) {
+    //             case 'we-are-offering-product-and-services':
+    //                 this.tagTest = 'We are offering product and services';
+    //                 break;
+    //             case 'we-are-loved-by-peoples':
+    //                 this.tagTest = 'We are loved by peoples';
+    //                 break;
+    //             case 'we-are-working-for-industries':
+    //                 this.tagTest = 'We are working for industries';
+    //                 break;
+    //             case 'we-are-working-in-cities':
+    //                 this.tagTest = 'We are working in cities';
+    //                 break;
+    //             default:
+    //                 this.tagTest = ''; // Handle default case if needed
+    //                 break;
+    //         }
+    //     } else {
+    //         console.error('Route parameter "title" is undefined');
+    //     }
+    // },
+    mounted() {
+        this.extractKeywordsFromRoute();
+    },
+    methods: {
+        extractKeywordsFromRoute() {
+            const routeParam = this.$route.params.slug;
+            const parts = routeParam.split('-');
+
+            this.text = 'we are offering';
+            this.service = parts.slice(3, parts.indexOf('to')).join(' ');
+            this.customer = parts.slice(parts.indexOf('to') + 1, parts.indexOf('from')).join(' ');
+            this.category = parts.slice(parts.indexOf('from') + 1, parts.indexOf('in')).join(' ');
+            this.place = parts.slice(parts.indexOf('in') + 1).join(' ');
+        },
+    },
 }
-</script> 
+</script>

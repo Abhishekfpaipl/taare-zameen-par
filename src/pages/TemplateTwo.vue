@@ -1,17 +1,19 @@
 <template>
-  <div class=" ">
-    <NavBar brandColorOne="#F8F9FA" brandTextColor="black"
-      brandLogo="https://cdn.bhybrid.org/imgcdn/20230708200505/card/p1109photo.jpg" brandName="hello" />
-    <div style="padding-top:70px">
-      <BannerOne banner="https://cdn.bhybrid.org/imgcdn/20230518121733/card/c15imgbg.png" />
+  <div class=" " style="padding-top:70px">
+    <!-- <div>
+      <BannerOne banner="/img/banner.jpg" brandColorOne="#125252" brandTextColor="#78E6B7" title="title here"
+        description="jksf skjfh" />
+    </div> -->
+    <FormBanner brandColorOne="#125252" />
+    <div class="my-3">
+      <ImageAndText image-src="/img/banner.jpg" title="Example Title"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit." buttonText="Explore"
+        image-position="left" />
     </div>
     <div class="my-3">
-      <ImageAndText image-src="/img/template1.png" title="Example Title"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit." image-position="left" />
-    </div>
-    <div class="my-3">
-      <ImageAndText image-src="/img/template1.png" title="Example Title"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit." image-position="right" />
+      <ImageAndText image-src="/img/banner2.jpg" title="Example Title"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit." buttonText="Shop"
+        image-position="right" />
     </div>
     <div class="my-3">
       <CollectionSection />
@@ -27,34 +29,39 @@
     </div>
 
     <div class="my-3">
+      <CustomCounter brandColorOne="#125252" brandTextColor="#78E6B7" name1="customers" :value1="50" name2="years"
+        :value2="10" name3="team" :value3="150" />
+    </div>
+
+    <div class="my-3">
       <TempFaqs :faqs="faqs" image-src="/img/templateOne/faq.svg" title="Frequently asked questions"
         image-position="left" />
     </div>
 
-    <div class="my-3">
-      <CustomCounter name1="customers" :value1="50" name2="years" :value2="10" name3="team" :value3="150" />
-    </div>
     <!-- <div class="my-3">
       <ContactCard brandColorOne="green" brandTextColor="white" brandMobile="8860012001"
-        brandEmail="support@sovisor.com" brandWhatsapp="8860012001"
-        brandAddress=" 2nd Floor, Block B1/632, Janakpuri, 110058, Delhi, India" />
+      brandEmail="support@sovisor.com" brandWhatsapp="8860012001"
+      brandAddress=" 2nd Floor, Block B1/632, Janakpuri, 110058, Delhi, India" />
     </div> -->
 
     <SocialSchedule />
 
-    <GalleryCollage />
+    <!-- <GalleryCollage /> -->
 
     <div class="my-3">
       <InfoSection :customFields="customFields" />
     </div>
+    <div class="">
+      <ImageSection banner="/img/banner1.png" brandColorOne="#125252" />
+    </div>
     <!-- <div class="my-3">
       <CardScroll/>
     </div> -->
-    <TempMiniFooter />
+    <!-- <TempMiniFooter /> -->
 
-    <DigitalFooter :socialLinks="social" brandName="Hello" tagLine="tagline" brandColorOne="green"
+    <!-- <DigitalFooter :socialLinks="social" brandName="Hello" tagLine="tagline" brandColorOne="green"
       brandLogo="https://cdn.bhybrid.org/imgcdn/20230708200505/card/p1109photo.jpg" brandEmail="support@sovisor.com"
-      brandMobile="8860012001" brandAddress="2nd Floor, Block B1/632, Janakpuri, <br> 110058, Delhi, India" />
+      brandMobile="8860012001" brandAddress="2nd Floor, Block B1/632, Janakpuri, <br> 110058, Delhi, India" /> -->
 
     <div class="whatsapp rounded-circle border d-flex align-items-center justify-content-center bg-success text-white"
       @click="openWhatsapp()" style="width: 37px; height: 37px;">
@@ -103,38 +110,42 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
-import BannerOne from '@/components/BannerOne.vue'
+// import NavBar from '@/components/NavBar.vue';
+// import BannerOne from '@/components/BannerOne.vue'
+import FormBanner from '@/components/services/FormBanner.vue'
 import CollectionSection from '@/components/CollectionSection.vue'
 import CustomCounter from '@/components/CustomCounter.vue'
 import InfoSection from '@/components/InfoSection.vue';
 import GroupsSection from '@/components/GroupsSection.vue';
 import SocialSchedule from '@/components/SocialSchedule.vue';
-import GalleryCollage from '@/components/GalleryCollage.vue'; 
-import DigitalFooter from '@/components/DigitalFooter.vue';
+// import GalleryCollage from '@/components/GalleryCollage.vue';
+// import DigitalFooter from '@/components/DigitalFooter.vue';
 import ImageAndText from '@/components/ImageAndText.vue';
 import TempFaqs from '@/components/TempFaqs.vue';
 import WhyChooseUs from '@/components/WhyChooseUs.vue';
 import TempCustomers from '@/components/TempCustomers.vue';
-import TempMiniFooter from '@/components/TempMiniFooter.vue'; 
+import ImageSection from '@/components/ImageSection.vue';
+// import TempMiniFooter from '@/components/TempMiniFooter.vue'; 
 
 export default {
   name: "TemplateOne",
   components: {
-    NavBar,
-    BannerOne,
+    // NavBar,
+    // BannerOne,
+    FormBanner,
     CustomCounter,
     CollectionSection,
-    InfoSection, 
+    InfoSection,
     GroupsSection,
     SocialSchedule,
-    DigitalFooter,
-    GalleryCollage,
+    // DigitalFooter,
+    // GalleryCollage,
     ImageAndText,
     TempFaqs,
     WhyChooseUs,
     TempCustomers,
-    TempMiniFooter,
+    ImageSection
+    // TempMiniFooter,
     // CardScroll,
   },
   data() {

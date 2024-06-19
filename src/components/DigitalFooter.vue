@@ -45,6 +45,9 @@
                     <router-link to="/career" class="text-dark" style="text-decoration: none;">
                         <p class="mb-2">Career</p>
                     </router-link>
+                    <router-link to="/business" class="text-dark" style="text-decoration: none;">
+                        <p class="mb-2">Business</p>
+                    </router-link>
                 </div>
             </div>
         </div>
